@@ -2,7 +2,6 @@
 
 namespace Omniphx\Forrest\Providers\Lumen;
 
-use Illuminate\Http\Request as LumenRedirector;
 use Laravel\Lumen\Http\Redirector;
 use Omniphx\Forrest\Interfaces\RedirectInterface;
 

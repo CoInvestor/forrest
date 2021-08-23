@@ -2,7 +2,7 @@
 
 namespace Omniphx\Forrest\Providers\Lumen;
 
-use Illuminate\Cache\CacheManager as Cache;
+use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Contracts\Config\Repository as Config;
 use Omniphx\Forrest\Exceptions\MissingKeyException;
 use Omniphx\Forrest\Interfaces\StorageInterface;
@@ -14,7 +14,7 @@ class LumenCache implements StorageInterface
     protected $minutes = 20;
     protected $storeForever;
 
-    public function __construct(Cache $cache, Config $config)
+    public function __construct(Config $config, Cache $cache)
     {
         $this->cache            = $cache;
         $this->path             = $config->get('forrest.storage.path');

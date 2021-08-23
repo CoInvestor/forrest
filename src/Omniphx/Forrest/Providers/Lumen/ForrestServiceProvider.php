@@ -5,7 +5,6 @@ namespace Omniphx\Forrest\Providers\Lumen;
 use GuzzleHttp\Client;
 use Omniphx\Forrest\Providers\BaseServiceProvider;
 use Omniphx\Forrest\Providers\Lumen\LumenRedirect;
-use Omniphx\Forrest\Providers\Laravel\LaravelCache;
 use Omniphx\Forrest\Providers\ObjectStorage;
 
 class ForrestServiceProvider extends BaseServiceProvider
@@ -36,7 +35,7 @@ class ForrestServiceProvider extends BaseServiceProvider
             case 'object':
                 return new ObjectStorage();
             default:
-                return new LumenCache(app('config'), app('request')->session());
+                return new LumenCache(app('config'), app('cache')->store());
         }
     }
 }
