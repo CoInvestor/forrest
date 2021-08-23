@@ -75,6 +75,8 @@ abstract class Client
 
     protected $tokenRepo;
 
+    protected $refreshTokenRepo;
+
     protected $versionRepo;
 
     /**
@@ -200,13 +202,13 @@ abstract class Client
         } else {
             $this->setFormatter($this->settings['defaults']['format']);
         }
-        
+
         if (isset($this->options['headers'])) {
             $this->parameters['headers'] = array_replace_recursive($this->formatter->setHeaders(), $this->options['headers']);
         } else {
             $this->parameters['headers'] = $this->formatter->setHeaders();
         }
-        
+
         if (isset($this->options['body'])) {
             if ($this->parameters['headers']['Content-Type'] == $this->formatter->getDefaultMIMEType()) {
                 $this->parameters['body'] = $this->formatter->setBody($this->options['body']);
@@ -849,5 +851,10 @@ abstract class Client
         } else {
             throw new SalesforceException('Invalid request: %s', $ex);
         }
+    }
+
+    public function getRefreshTokenRepo()
+    {
+        return $this->refreshTokenRepo;
     }
 }
