@@ -857,4 +857,9 @@ abstract class Client
     {
         return $this->refreshTokenRepo;
     }
+
+    public function getTokenRepo()
+    {
+        return $this->tokenRepo;
+    }
 }
