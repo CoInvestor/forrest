@@ -862,4 +862,9 @@ abstract class Client
     {
         return $this->tokenRepo;
     }
+
+    public function getVersionRepo()
+    {
+        return $this->versionRepo;
+    }
 }
